@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <form action="/" method="post">
+        <table class="table">
+
+            <thead>
+                <tr>
+
+                   <th scope="col">Ticker</th>
+                   <th scope="col">Shares Owned</th>
+                   <th scope="col">Current Stock Value</th>
+                   <th scope="col">Total Value</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for shares, quantities, currentValue, totalValue in items %}
+                <tr>
+
+                    <td> {{ shares }} </td>
+                    <td> {{ quantities }} </td>
+                    <td> {{ currentValue | usd }} </td>
+                    <td> {{ totalValue | usd }} </td>
+
+                </tr>
+
+                {% endfor %}
+
+                <tr>
+
+                    <td>CASH</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ cash | usd }}</td>
+
+                </tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><b>{{ grandSum | usd }}</b></td>
+
+            </tbody>
+
+         </table>
+    </form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    sell
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="POST">
+
+        <div class="form-group">
+
+            <label for="Ticker">Ticker Select</label>
+
+            <select name="symbol" class="selectpicker form-control">
+
+              {% for ticker in tickers %}
+
+              <option value= "{{ticker}}" SELECTED > {{ ticker }}</option>
+
+              {% endfor %}
+
+            </select>
+
+            <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="Enter quantity" type="text">
+
+            <button class="btn btn-primary" type="submit">Sell</button>
+
+        </div>
+
+    </form>
+{% endblock %}

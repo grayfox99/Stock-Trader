@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    history
+{% endblock %}
+
+{% block main %}
+    <form action="/history.html" method="post">
+        <table class="table">
+
+            <thead>
+                <tr>
+
+                   <th scope="col">Timestamp</th>
+                   <th scope="col">Ticker</th>
+                   <th scope="col">Purchase Price</th>
+                   <th scope="col">Transaction Type</th>
+                   <th scope="col">Quantity</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for timestamp, stock, stock_price, transact_type, quantity in items %}
+                <tr>
+
+
+                    <td> {{ timestamp }} </td>
+                    <td> {{ stock }} </td>
+                    <td> {{ stock_price | usd }} </td>
+                    <td> {{ transact_type }} </td>
+                    <td> {{ quantity }} </td>
+
+
+                </tr>
+                {% endfor %}
+            </tbody>
+
+         </table>
+    </form>
+{% endblock %}
